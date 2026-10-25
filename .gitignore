@@ -1,0 +1,47 @@
+# Secrets
+.env
+.env.*
+!.env.example
+**/.env
+secrets/
+backend/secrets/
+*gmail_token*
+*gmail_credentials*
+
+# Financial data never belongs in the repo: statements, exports, local databases.
+data/
+statements/
+*.xlsx
+*.xls
+*.csv
+*.pdf
+*.db
+*.sqlite3
+
+# Household fixtures: only the fictional demo is committed.
+backend/scripts/fixtures/*.json
+!backend/scripts/fixtures/demo_household.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Node / frontend
+node_modules/
+**/node_modules/
+**/dist/
+*.local
+
+# Editors / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────────────────────
+   Artha — Molten Gold design system
+   warm near-black void · single brass accent · editorial type ·
+   tabular mono numbers · film grain · brass hairlines
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  /* Legacy names remapped to the elevated "Quiet Wealth" palette (role-preserving). */
+  --void:        #F1EDE6;
+  --void-2:      #FFFFFF;
+  --void-3:      #FAF8F2;
+  --hairline:    #E5E0D5;
+  --hairline-2:  #D6D0C2;
+  --brass:       #0F7A52;
+  --brass-bright:#0A5538;
+  --paper:       #14150E;
+  --paper-dim:   #595E50;
+  --paper-faint: #8E9384;
+  --pos:         #0F7A52;
+  --neg:         #B94F39;
+
+  /* ── "Quiet Wealth" design system — warm premium paper, one confident green,
+     crisp cards that LIFT off the canvas, editorial display type. Calm, private-bank feel. ── */
+  --bg:          #F1EDE6;   /* warmer, deeper premium paper (cards lift off it) */
+  --surface:     #FFFFFF;   /* cards — crisp white, now with a soft shadow */
+  --surface-2:   #FAF8F2;   /* subtle raised / striped rows */
+  --line:        #E5E0D5;   /* warm hairline borders */
+  --line-2:      #D6D0C2;
+  --ink:         #14150E;   /* primary text — deep warm near-black */
+  --ink-2:       #595E50;   /* secondary */
+  --ink-3:       #8E9384;   /* tertiary / labels */
+  --accent:      #0F7A52;   /* THE accent — financially-positive green */
+  --accent-2:    #0A5538;   /* deeper green (emphasis, hover) */
+  --accent-soft: #0F7A5214; /* tinted accent wash */
+  --positive:    #0F7A52;
+  --negative:    #B94F39;   /* muted terracotta */
+  --warn:        #B07D1E;   /* muted amber */
+
+  /* elevation — soft, warm-toned shadows give cards real depth (was: flat borders only) */
+  --shadow-sm:   0 1px 2px rgba(36, 32, 22, 0.05);
+  --shadow:      0 1px 2px rgba(36, 32, 22, 0.04), 0 8px 20px -8px rgba(36, 32, 22, 0.12);
+
+  /* ── ONE radius scale (mirrors tailwind.config borderRadius). Nothing is a sharp rectangle. ── */
+  --radius-chip:  9999px;   /* pills / badges / toggles */
+  --radius-input: 0.75rem;  /* 12px — inputs / small controls */
+  --radius-tile:  1rem;     /* 16px — stat tiles / rows / cards */
+  --radius-panel: 1.25rem;  /* 20px — grouped panels */
+  --radius-sheet: 1.5rem;   /* 24px — sheets / hero blocks */
+
+  /* Content band — the app-level max-width the desktop layout fills (not a 640px column). */
+  --content-max: 1200px;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+}
+html { background: var(--void); }     /* fills any overscroll / sub-pixel gaps */
+body { overflow-x: hidden; }          /* never a stray horizontal gutter */
+#root { display: flex; flex-direction: column; }
+#root > * { flex: 1 0 auto; }         /* app shell always fills the viewport */
+
+body {
+  margin: 0;
+  background: var(--void);
+  color: var(--paper);
+  font-family: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Display + numeric helpers */
+.font-display { font-family: "Clash Display", "Hanken Grotesk", sans-serif; }
+.font-mono    { font-family: "JetBrains Mono", ui-monospace, monospace; }
+.tnum         { font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1; }
+
+.tracked { letter-spacing: 0.14em; text-transform: uppercase; }
+
+/* iOS Safari zooms the whole page in when you focus an input whose font-size is < 16px (and the
+   zoom never resets → distorted UI). Force 16px on all form controls to stop it. */
+input, select, textarea { font-size: 16px; }
+
+/* Money is ALWAYS mono + tabular — the core anti-slop rule */
+.money { font-family: "JetBrains Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+
+/* ── "Quiet Wealth" craft layer — restyles the whole app with zero component edits ── */
+/* Editorial display headings: confident Clash Display, tight tracking (was: default UI font) */
+h1, h2, h3 { font-family: "Clash Display", "Hanken Grotesk", sans-serif; letter-spacing: -0.018em; }
+/* Cards LIFT off the warm canvas with a soft shadow. Scoped to rounded SURFACE cards (not inputs
+   or full-bleed rows), so depth appears app-wide without touching any component markup. */
+.rounded-2xl.bg-surface, .rounded-3xl.bg-surface,
+.rounded-tile.bg-surface, .rounded-card.bg-surface, .rounded-panel.bg-surface, .rounded-sheet.bg-surface {
+  box-shadow: var(--shadow);
+}
+.rounded-xl.bg-surface, .rounded-input.bg-surface { box-shadow: var(--shadow-sm); }
+
+/* ── Legacy-tile softening (central, zero component edits) ──────────────────────
+   The un-migrated summary tiles (Debt / Commitments / Asset·Recurring·Insurance
+   managers) are square `bg-void` cells in a `gap-px bg-hairline` grid — the sharp
+   gridlines the owner reacts to. Round + clip the grid so every legacy tile inherits
+   the corner until each screen migrates to <StatCard>. Nothing stays a sharp rectangle. */
+.gap-px.bg-hairline { border-radius: var(--radius-tile); overflow: hidden; }
+
+/* Film grain overlay — kills the flat digital look. Sits above bg, below content. */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── Adaptive layout primitives (fluid, not hardcoded breakpoints) ──
+   Fluid grid + vw approach. Spacing scales with
+   the viewport via clamp(); grids reflow by available space via auto-fit. */
+.page-x { padding-left: clamp(1.25rem, 3vw, 4.5rem); padding-right: clamp(1.25rem, 3vw, 4.5rem); }
+.page-y { padding-top: clamp(1.25rem, 1.8vw, 2.25rem); padding-bottom: clamp(1.25rem, 1.8vw, 2.25rem); }
+
+/* auto-fit grid: columns appear/collapse by themselves as width changes.
+   set --min per use to control the smallest a cell may get before reflow. */
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--min, 16rem), 100%), 1fr));
+}
+
+/* Responsive table → stacked cards on phones (the most important value is never cut off).
+   Add class `rtable` to a <table> and data-label="Col" to each <td>. */
+@media (max-width: 640px) {
+  .rtable thead { display: none; }
+  .rtable, .rtable tbody, .rtable tr, .rtable td { display: block; width: 100%; }
+  .rtable tr { border: 1px solid var(--line); border-radius: 14px; background: var(--surface);
+    padding: 4px 14px; margin-bottom: 10px; }
+  .rtable td { display: flex; justify-content: space-between; align-items: baseline; gap: 14px;
+    padding: 8px 0 !important; border: 0 !important; text-align: right !important; min-width: 0 !important;
+    max-width: none !important; white-space: normal !important; }
+  .rtable td::before { content: attr(data-label); color: var(--ink-3); font-size: 12px; font-weight: 600;
+    text-align: left; flex: none; }
+  .rtable td:first-child { font-weight: 600; padding-top: 12px !important; }
+  .rtable td:empty, .rtable td[data-label=""]::before { display: none; }
+}
+
+/* Mobile safety: a wide table scrolls inside its OWN box, never the whole page.
+   Targets any element that directly wraps a <table> (Transactions, Assets, Debt, …). */
+:where(div):has(> table) { overflow-x: auto; max-width: 100%; -webkit-overflow-scrolling: touch; }
+
+/* Always keep a comfortable side gutter, and grow it for the notch in landscape. */
+.safe-x { padding-left: max(1.25rem, env(safe-area-inset-left)); padding-right: max(1.25rem, env(safe-area-inset-right)); }
+
+/* Hairline rule */
+.hr { height: 1px; background: var(--hairline); border: 0; }
+/* Dashed rule — separates a decomposition's rows from its bold Total */
+.hr-dashed { height: 0; border: 0; border-top: 1px dashed var(--hairline); }
+
+/* Brass focus ring on interactive elements */
+a:focus-visible, button:focus-visible {
+  outline: 1px solid var(--brass);
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar — thin, void-toned */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--void); }
+::-webkit-scrollbar-thumb { background: var(--hairline); border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: var(--hairline-2); }
+
+/* Recharts text inherits paper-dim */
+.recharts-text { fill: var(--paper-dim); }
+.recharts-cartesian-axis-line, .recharts-cartesian-axis-tick-line { stroke: var(--hairline); }

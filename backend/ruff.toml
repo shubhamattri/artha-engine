@@ -1,0 +1,10 @@
+line-length = 110
+target-version = "py311"
+extend-exclude = ["alembic/versions"]
+
+[lint]
+# Pyflakes plus syntax and statement errors: things that are bugs, not style.
+select = ["E4", "E7", "E9", "F"]
+# House style, kept on purpose: compact `a; b` statements, `l` for a loan in comprehensions,
+# imports placed after a comment block that explains them, and small named lambdas.
+ignore = ["E701", "E702", "E741", "E731", "E402"]

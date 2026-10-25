@@ -1,0 +1,25 @@
+// Artha "Sage" design system — shared UI primitives. Import from here.
+export { default as Icon, type IconName } from './Icon'
+export { Stat, StatGrid, Money } from './Stat'
+export { StatCard, type StatTone } from './StatCard'
+export { Loading, EmptyState, ErrorState } from './States'
+export { Field, TextInput, SelectInput, inputClass } from './Field'
+export { FormRow, SubmitButton } from './FormRow'
+export { FilterBar, FilterSelect } from './FilterBar'
+export { FilterPanel, type FilterDef, type FilterOption } from './FilterPanel'
+export { AddPanel } from './AddPanel'
+export { Card, SectionHeader } from './Card'
+export { Strap, StrapLegend, type StrapTone } from './Strap'
+export {
+  LedgerBlock, LedgerSummary, LedgerRows,
+  type LedgerTone, type LedgerPair, type LedgerSegment, type LedgerRowItem, type LedgerGroup,
+} from './LedgerSummary'
+export { PageContainer, PageGrid } from './Page'
+export { TxnRow, RecordRow, CompactRow, Chip, DetailCell, LedgerRow, LedgerList, type RecordField } from './Rows'
+export { default as Sheet } from './Sheet'
+export { ConfirmProvider, useConfirm } from './ConfirmDialog'
+export { default as BottomNav } from './BottomNav'
+export { default as HolderOptions } from './HolderOptions'
+export { default as PeriodToggle } from './PeriodToggle'
+export { Segmented } from './Segmented'
+export { Provenance, ProvenanceBadge, type ProvenanceKind } from './Provenance'

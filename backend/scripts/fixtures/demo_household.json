@@ -1,0 +1,56 @@
+{
+  "_note": "Fictional demo household. Generic members, round illustrative figures. Copy this file, put your own numbers in it, and pass its path to scripts/seed_household.py — real fixtures are gitignored.",
+  "household_id": 1,
+  "loans": [
+    {
+      "name": "Personal Loan",
+      "lender": "Example Bank",
+      "holder": "Member A",
+      "category": "Personal",
+      "original_principal": 500000,
+      "annual_rate_pct": 12.0,
+      "tenure_months": 60,
+      "disbursement_date": "2024-01-15"
+    },
+    {
+      "name": "Car Loan",
+      "lender": "Sample Motor Finance",
+      "holder": "Member B",
+      "category": "Car",
+      "original_principal": 800000,
+      "annual_rate_pct": 9.5,
+      "tenure_months": 84,
+      "disbursement_date": "2024-06-01"
+    },
+    {
+      "name": "Home Loan",
+      "lender": "Example Bank",
+      "holder": "Member A",
+      "category": "Home",
+      "original_principal": 3000000,
+      "annual_rate_pct": 8.5,
+      "tenure_months": 240,
+      "disbursement_date": "2022-04-01"
+    },
+    {
+      "name": "Credit Card EMI",
+      "lender": "Demo Card Services",
+      "holder": "Member B",
+      "category": "Credit Card",
+      "original_principal": 100000,
+      "annual_rate_pct": 15.0,
+      "tenure_months": 12,
+      "disbursement_date": "2025-11-01"
+    }
+  ],
+  "cashflow": [
+    { "kind": "income", "label": "Salary", "amount_inr": 200000, "holder": "Member A" },
+    { "kind": "income", "label": "Salary", "amount_inr": 150000, "holder": "Member B" },
+    { "kind": "fixed", "label": "Rent", "amount_inr": 30000, "holder": "Household" },
+    { "kind": "fixed", "label": "Utilities & household", "amount_inr": 10000, "holder": "Household" },
+    { "kind": "fixed", "label": "Insurance premiums", "amount_inr": 5000, "holder": "Household" },
+    { "kind": "fixed", "label": "Child / schooling", "amount_inr": 15000, "holder": "Household" },
+    { "kind": "saving", "label": "Mutual fund SIP", "amount_inr": 25000, "holder": "Member A" },
+    { "kind": "saving", "label": "Recurring deposit", "amount_inr": 10000, "holder": "Household" }
+  ]
+}
